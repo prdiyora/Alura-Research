@@ -1,0 +1,9 @@
+node_modules/
+*.plain.json
+*.pw
+*.png
+playwright-report/
+package-lock.json
+package.json
+test*.mjs
+*.tmp
