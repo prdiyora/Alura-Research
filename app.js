@@ -7,7 +7,7 @@ function show(D){
  $('#updated').textContent='Last research checkpoint: '+new Date(D.updated).toLocaleString('en-IN',{dateStyle:'medium',timeStyle:'short',timeZone:'Asia/Kolkata'})+' IST';
  $('#dayTitle').textContent=new Date(D.day+'T12:00:00+05:30').toLocaleDateString('en-IN',{day:'numeric',month:'long',year:'numeric'});
  $('#credits').textContent=D.credits.used+' / '+D.credits.total.toLocaleString('en-IN')+' used';$('#creditReset').textContent='Monthly allowance. Reset in '+D.credits.reset+'.';$('#actionCost').textContent=D.credits.actionCost;
- $('#status').textContent=D.sessionStatus+'. The 10 PM session is scheduled, not yet completed.';$('#correction').textContent=D.correction;
+ $('#status').textContent=D.sessionStatus+(D.nightComplete?'.':' . The 10 PM session is scheduled, not yet completed.');$('#correction').textContent=D.correction;
  $('#quickLinks').replaceChildren(...D.links.map(x=>link(x.name,x.url)));
  $('#limitGrid').replaceChildren(...D.limits.map(x=>{const c=el('article','limit');c.append(el('h3','',x.name));const cap=el('div','cap',x.cap+' ');cap.append(el('small','','per day'));c.append(cap,el('p','',x.logged===null?'Logged count not established':x.logged+' recorded activities today'),el('p','mini',x.remainingLabel || 'Remaining: unverified'));if(x.note)c.append(el('p','',x.note));return c;}));
  $('#sessionList').replaceChildren(...D.sessions.map(s=>{const n=el('article','event');const b=el('div');b.append(el('h3','',s.status),el('p','',s.detail));n.append(el('time','',s.time+' IST'),b);return n;}));
