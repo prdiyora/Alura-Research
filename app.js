@@ -3,6 +3,7 @@ const $=s=>document.querySelector(s);
 function el(tag,cls,text){const n=document.createElement(tag);if(cls)n.className=cls;if(text!==undefined)n.textContent=text;return n;}
 function link(name,url){const a=el('a','',name+' ↗');const u=new URL(url);if(u.protocol!=='https:')throw new Error('Unsafe URL');a.href=u.href;a.target='_blank';a.rel='noopener noreferrer';return a;}
 function show(D){
+ $('#nextSession').textContent=D.nextSession;$('#dailyBalance').textContent=D.dailyBalance;$('#dailyBalanceNote').textContent=D.remaining;$('#bulkCount').textContent=D.bulkCount;$('#bulkNote').textContent=D.bulkNote;
  $('#gate').hidden=true;$('#app').hidden=false;
  $('#updated').textContent='Last research checkpoint: '+new Date(D.updated).toLocaleString('en-IN',{dateStyle:'medium',timeStyle:'short',timeZone:'Asia/Kolkata'})+' IST';
  $('#dayTitle').textContent=new Date(D.day+'T12:00:00+05:30').toLocaleDateString('en-IN',{day:'numeric',month:'long',year:'numeric'});
